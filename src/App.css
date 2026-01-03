@@ -1,18 +1,30 @@
 /* App.css - The Design File */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  --primary: #FF9F1C;   /* Pumpkin Orange */
-  --secondary: #2EC4B6; /* Teal Green */
+  --primary: #b395ee;   /* Purple*/
+  --secondary: #f6c8ee; /* Teal Green */
   --dark: #011627;      /* Dark Blue */
   --light: #FDFFFC;     /* Warm White */
 }
 
 body {
   margin: 0;
-  font-family: 'Nunito', sans-serif;
-  background-color: var(--light);
+  font-family: 'Nunito', poppy;
+  background-color: --light;
   color: var(--dark);
+
+  /*cursor change*/
+  cursor: url('cursorpaw2.png') 16 16, auto;
+}
+
+/*custom cursor for links and bvuttons*/
+a, button, .btn-paw, .feature-card{
+  cursor: url(./cursorpaw2.png) 16 16, pointer;
 }
 
 /* Navigation Bar */
@@ -75,7 +87,7 @@ body {
   position: relative;
   overflow: hidden;
   color: white;
-  background-color: #333; /* Fallback color */
+  background-color: rgb(247, 247, 199); /* Fallback color */
 }
 
 .hero-overlay {
@@ -102,7 +114,7 @@ body {
 }
 
 /* Feature Cards */
-.features-grid {
+.features-grid, product-grid, .product-showcase{
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -111,7 +123,7 @@ body {
 }
 
 .feature-card {
-  background: white;
+  background: rgb(241, 173, 173);
   padding: 2rem;
   border-radius: 20px;
   width: 250px;
@@ -123,4 +135,47 @@ body {
 
 .feature-card:hover {
   transform: translateY(-10px);
+}
+
+/* --- MOBILE RESPONSIVENESS RULES --- */
+
+/* This code ONLY runs if the screen is smaller than 768px (Tablets & Phones) */
+@media (max-width: 768px) {
+  
+  /* 1. Make the Hero Text smaller so it fits */
+  .hero h1 {
+    font-size: 2.5rem; /* Shrink from 3.5rem */
+  }
+  
+  .hero p {
+    font-size: 1.2rem; /* Shrink the subtitle slightly */
+  }
+
+  /* 2. Stack the Navigation Bar */
+  .navbar {
+    flex-direction: column; /* Stack Logo on top, links below */
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    flex-direction: column; /* Stack the links vertically */
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    margin-left: 0; /* Remove left margin since they are stacked */
+  }
+
+  /* 3. Adjust Padding for Sections */
+  section {
+    padding: 3rem 1rem; /* Less padding on sides for mobile */
+  }
+  
+  .product-showcase {
+    flex-direction: column-reverse; /* Puts text ON TOP of image on mobile (optional) */
+    text-align: center;
+  }
 }
